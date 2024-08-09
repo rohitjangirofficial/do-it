@@ -170,30 +170,38 @@ const App = () => {
                 handleAddTodo={handleAddTodo}
               />
               <div className="mt-6 border-0 border-red-400">
-                <TodoList
-                  todos={todos}
-                  handleToggleComplete={handleToggleComplete}
-                  handleToggleFavourite={handleToggleFavourite}
-                  handleOpenModal={handleOpenModal}
-                  dark={dark}
-                  isCompleted={false}
-                  todoView={todoView}
-                />
+                {todos.length > 0 ? (
+                  <TodoList
+                    todos={todos}
+                    handleToggleComplete={handleToggleComplete}
+                    handleToggleFavourite={handleToggleFavourite}
+                    handleOpenModal={handleOpenModal}
+                    dark={dark}
+                    isCompleted={false}
+                    todoView={todoView}
+                  />
+                ) : (
+                  <InfoMessage message="No Data..." />
+                )}
 
                 <div className="border-0 border-red-400">
                   <div>
                     <h3 className="border-b-2 border-[#496E4B33] pb-6 text-[15px] font-normal text-[#1B281B] dark:text-[#EBEBEB]">
                       Completed
                     </h3>
-                    <TodoList
-                      todos={todos}
-                      handleToggleComplete={handleToggleComplete}
-                      handleToggleFavourite={handleToggleFavourite}
-                      handleOpenModal={handleOpenModal}
-                      dark={dark}
-                      isCompleted={true}
-                      todoView="list"
-                    />
+                    {todos.length > 0 ? (
+                      <TodoList
+                        todos={todos}
+                        handleToggleComplete={handleToggleComplete}
+                        handleToggleFavourite={handleToggleFavourite}
+                        handleOpenModal={handleOpenModal}
+                        dark={dark}
+                        isCompleted={true}
+                        todoView="list"
+                      />
+                    ) : (
+                      <InfoMessage message="No Data..." />
+                    )}
                   </div>
                 </div>
               </div>
@@ -215,6 +223,10 @@ const App = () => {
       </div>
     </>
   );
+};
+
+const InfoMessage = ({ message }: { message: string }) => {
+  return <p className="my-4 text-sm text-gray-400">{message}</p>;
 };
 
 export default App;
