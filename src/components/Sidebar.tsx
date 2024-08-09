@@ -94,7 +94,7 @@ const Sidebar = ({ profileLinks, todos }: SidebarProps) => {
                   <Doughnut id="doughnutChart" data={data} options={options} />
                 </>
               ) : (
-                <span className="text-[15px] font-medium text-[#1B281B]">
+                <span className="text-[15px] font-medium text-[#1B281B] dark:text-[#EBEBEB]">
                   No Data...
                 </span>
               )}
