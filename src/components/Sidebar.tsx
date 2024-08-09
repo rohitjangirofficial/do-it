@@ -78,17 +78,26 @@ const Sidebar = ({ profileLinks, todos }: SidebarProps) => {
                 Add List
               </button>
             </div>
+
             <div className="flex flex-col gap-3 rounded-md bg-white p-6 dark:bg-[#232323]">
-              <div>
-                <p className="text-[15px] font-medium text-[#1B281B] dark:text-[#EBEBEB]">
-                  Today Task
-                </p>
-                <span className="text-[20px] font-medium text-[#1B281B] dark:text-[#EBEBEB]">
-                  {todos.length}
+              {todos.length > 0 ? (
+                <>
+                  <div>
+                    <p className="text-[15px] font-medium text-[#1B281B] dark:text-[#EBEBEB]">
+                      Today Task
+                    </p>
+                    <span className="text-[20px] font-medium text-[#1B281B] dark:text-[#EBEBEB]">
+                      {todos.length}
+                    </span>
+                  </div>
+                  <hr className="mx-[-24px] h-[1.33px] border-t-0 bg-[#F0F0F0] dark:bg-black" />
+                  <Doughnut id="doughnutChart" data={data} options={options} />
+                </>
+              ) : (
+                <span className="text-[15px] font-medium text-[#1B281B]">
+                  No Data...
                 </span>
-              </div>
-              <hr className="mx-[-24px] h-[1.33px] border-t-0 bg-[#F0F0F0] dark:bg-black" />
-              <Doughnut id="doughnutChart" data={data} options={options} />
+              )}
             </div>
           </div>
         </div>

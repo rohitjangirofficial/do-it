@@ -22,6 +22,7 @@ import {
   deleteTodo,
   setTodos,
 } from "./redux/slices/todosSlice";
+import InfoMessage from "./components/InfoMessage";
 
 const profileLinks: ProfileLink[] = [
   {
@@ -138,11 +139,11 @@ const App = () => {
 
         {/* Mobile Sidebar */}
         <div
-          className={`fixed inset-0 right-0 top-0 z-40 h-full w-full transform bg-[rgba(0,0,0,0.500)] transition-all lg:hidden lg:transform-none ${toggleSidebar ? "translate-x-0" : "-translate-x-full"}`}
+          className={`fixed inset-0 right-0 top-0 z-40 h-full w-full transform overflow-hidden bg-[rgba(0,0,0,0.500)] transition-all lg:hidden lg:transform-none ${toggleSidebar ? "translate-x-0" : "-translate-x-full"}`}
           onClick={handleToggleSidebar}
         >
           <div
-            className="h-full w-[350px] overflow-auto"
+            className="h-full w-[350px] overflow-auto bg-[#EEF6EF]"
             onClick={(e) => e.stopPropagation()}
           >
             <Sidebar profileLinks={profileLinks} todos={todos} type="mobile" />
@@ -223,10 +224,6 @@ const App = () => {
       </div>
     </>
   );
-};
-
-const InfoMessage = ({ message }: { message: string }) => {
-  return <p className="my-4 text-sm text-gray-400">{message}</p>;
 };
 
 export default App;
